@@ -13,6 +13,7 @@ var data = {
 };
 function sendMsg(data){
 	data = JSON.stringify(data);
+	var datalen = (new Buffer(data)).length;
 	var options = {
 		method: "POST",
 		hostname: "qyapi.weixin.qq.com",
@@ -20,7 +21,7 @@ function sendMsg(data){
 		path: "/cgi-bin/message/send?access_token="+getAccessToken(),
 		headers: {  
 			"Content-Type": 'application/x-www-form-urlencoded',  
-			"Content-Length": data.length  
+			"Content-Length": datalen  
 		}
 	};
 	var req = https.request(options, function(res){});
