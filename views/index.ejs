@@ -1,0 +1,39 @@
+<%- include header %>
+
+<body ng-app="crb" ng-controller="crbCtrl">
+<div class="panel panel-primary" >
+	<div class="panel-heading">
+		<h3 class="panel-title">选择开始时间</h3>
+	</div>
+	<div class="panel-body">
+		<label>选择日期</label>
+		<select class="form-control input-sm" ng-model="day">
+			<%for(var i=0;i<dayList.length;i++){%>
+			<option value="<%= dayList[i] %>"><%= dayList[i] %></option>
+			<%}%>
+		</select>
+		<label>选择小时</label>
+		<select class="form-control input-sm" ng-model="hour">
+			<%for(var i=0;i<hourList.length;i++){%>
+			<option value="<%= hourList[i] %>"><%= hourList[i] %></option>
+			<%}%>
+		</select>
+		<label>选择分钟</label>
+		<select class="form-control input-sm" ng-model="minute">
+			<%for(var i=0;i<minList.length;i++){%>
+			<option value="<%= minList[i] %>"><%= minList[i] %></option>
+			<%}%>
+		</select>
+		<input class="form-control input-sm" id="test" type="text" placeholder="预计持续时间(分钟)" style="margin-top: 3%;" ng-model="timespend" ng-keypress="enter($event)"/>
+		<a href="/classroom?day={{day}}&hour={{hour}}&minute={{minute}}&timespend={{timespend}}">
+		<button class="btn btn-default center-block" id="sendButton" style="margin-top: 3%; width: 20%;" ng-click="sendTime()">下一步</button>
+		</a>
+	</div>
+</div>
+</body>
+<script>
+var app = angular.module("crb", []);
+app.controller("crbCtrl", function($scope, $http){});
+</script>
+
+<%- include footer %>

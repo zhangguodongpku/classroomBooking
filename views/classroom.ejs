@@ -1,0 +1,23 @@
+<%- include header %>
+
+<body>
+<div class="panel panel-primary" >
+	<div class="panel-heading">
+		<h3 class="panel-title">教室列表</h3>
+	</div>
+	<div class="panel-body">
+		<ul class="list-group">
+			<%for(var i=0;i<classroom.length;i++){ if(classroom[i].review==1){classroom[i].review="是"; target="applicant"}else{classroom[i].review="否";target="booking"}%>
+				<a href="<%= target %>?classroom=<%= classroom[i].id %>&opentime=<%= opentime %>&endtime=<%= endtime %>">
+				<li class="list-group-item">教室：<%= classroom[i].id %>&nbsp;&nbsp;可容纳人数：<%= classroom[i].numbers %>
+				&nbsp;&nbsp;是否需要审核：<%= classroom[i].review %></li>
+				</a>
+			<%}%>
+		</ul>
+	</div>
+</div>
+</body>
+<script>
+</script>
+
+<%- include footer %>

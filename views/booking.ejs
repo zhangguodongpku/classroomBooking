@@ -1,0 +1,35 @@
+<%- include header %>
+
+<body>
+<div class="panel panel-primary" >
+	<div class="panel-heading">
+		<h3 class="panel-title">填写活动详情</h3>
+	</div>
+	<div class="panel-body">
+		<form method="post">
+			<div class="form-group">
+				<input readonly="readonly" type="text" class="form-control" name="classroom" value="<%=classroom%>" />
+			</div>
+			<div class="form-group">
+				<input readonly="readonly" type="text" class="form-control" name="opentime" value="<%=opentime%>" />
+			</div>
+			<div class="form-group">
+				<input readonly="readonly" type="text" class="form-control" name="endtime" value="<%=endtime%>" />
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" name="department" placeholder="* 部门（学苑、团委、姓名等）" />
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" name="contact" placeholder="* 联系方式" />
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-default center-block" id="registerButton">提交</button>
+			</div>
+		</form>
+	</div>
+</div>
+</body>
+<script>
+</script>
+
+<%- include footer %>

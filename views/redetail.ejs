@@ -1,0 +1,58 @@
+<%- include header %>
+
+<body ng-app="crb" ng-controller="crbCtrl">
+<div class="panel panel-primary" >
+	<div class="panel-heading">
+		<h3 class="panel-title"><%= title %></h3>
+	</div>
+	<div class="panel-body">
+		<ul class="list-group">
+			<li class="list-group-item">
+				申请人：<%= news.applicant %>
+			</li>
+			<li class="list-group-item">
+				所属部门：<%= news.department %>
+			</li>
+			<li class="list-group-item">
+				时间：<%= news.opentime %>
+			</li>
+			<li class="list-group-item">
+				申请教室：<%= news.classroom %>
+			</li>
+			<li class="list-group-item">
+				预计人数：<%= news.nums %>
+			</li>
+		</ul>
+		<p><%= news.content %></p>
+		<input id="newsid" readonly="readonly" style="visibility:hidden" type="text" class="form-control" name="review" value="<%= news.id %>" />
+		<input id="review" readonly="readonly" style="visibility:hidden" type="text" class="form-control" name="review" value="<%= review %>" />
+		<a href="/review">
+		<button class="btn btn-default pull-left" id="nopassButton" ng-click="nopass()">不通过</button>
+		<button class="btn btn-default pull-right" id="passButton" ng-click="pass()">通过</button>
+		</a>
+	</div>
+</div>
+</body>
+<script>
+var app = angular.module("crb", []);
+app.controller("crbCtrl", function($scope, $http){
+	$scope.pass = function(){
+		var data = {
+			id: $("#newsid").val(),
+			review: $("#review").val(),
+			stat: 1
+		};
+		$http({method: "POST", url:"/redetail", data: data}).success(function(data){});
+	}
+	$scope.nopass = function(){
+		var data = {
+			id: $("#newsid").val(),
+			review: $("#review").val(),
+			stat: 0
+		};
+		$http({method: "POST", url:"/redetail", data: data}).success(function(data){});
+	}
+});
+</script>
+
+<%- include footer %>

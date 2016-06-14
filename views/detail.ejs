@@ -1,0 +1,20 @@
+<%- include header %>
+
+<body ng-app="crb" ng-controller="crbCtrl">
+<div class="panel panel-primary" >
+	<div class="panel-heading">
+		<h3 class="panel-title"><%= title %></h3>
+	</div>
+	<div class="panel-body">
+		<h2><%= news.name %></h2>
+		<p><%= news.department %>&nbsp;&nbsp;<%= news.classroom %>&nbsp;&nbsp;<%= news.opentime %></p>
+		<p><%= news.content %></p>
+	</div>
+</div>
+</body>
+<script>
+var app = angular.module("crb", []);
+app.controller("crbCtrl", function($scope, $http){});
+</script>
+
+<%- include footer %>
